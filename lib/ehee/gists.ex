@@ -22,18 +22,76 @@ defmodule Ehee.Gists do
   end
 
 
-  def gists_create do
-    body = %{ "description": "the description for this gist",
-              "public": true,
+  def gists_create(description, is_public, file_name, content) do
+    body = %{ "description": description,
+              "public": is_public,
               "files": %{
-                "file1.txt": %{
-                  "content": "gist contents"
+                "#{file_name}": %{
+                  "content": content
                            }
               }
             }
 
     response = Gateway.post("/gists", Poison.encode!(body)) |> elem(1)
     Poison.decode!(response.body)
+  end
+
+  def gists_edit(id, file_name, content) do
+    body = %{"files": %{
+                "#{file_name}": %{
+                  content: content
+                           }
+                    }
+             }
+    response = Gateway.patch("/gists/#{id}", Poison.encode!(body)) |> elem(1)
+    Poison.decode!(response.body)
+  end
+
+  def gists_star(id) do
+    response = Gateway.put("/gists/#{id}/star", "") |> elem(1)
+    response.status_code == 204
+  end
+
+  def gists_unstar(id) do
+    response = Gateway.delete("/gists/#{id}/star") |> elem(1)
+    response.status_code == 204
+  end
+
+  def gists_starred?(id) do
+    response = Gateway.get("/gists/#{id}/star") |> elem(1)
+    response.status_code == 204
+  end
+
+  def gists_destroy(id) do
+    response = Gateway.delete("/gists/#{id}") |> elem(1)
+    response.status_code == 204
+  end
+
+  def gists_comments(id) do
+    response = Gateway.get("/gists/#{id}/comments") |> elem(1)
+    Poison.decode!(response.body)
+  end
+
+  def gists_comments(gist_id, comment_id) do
+    response = Gateway.get("/gists/#{gist_id}/comments/#{comment_id}")
+    Poison.decode!(response.body)
+  end
+
+  def gists_comments_create(id, comment) do
+    body = %{ "body": comment}
+    response = Gateway.post("/gists/#{id}/comments", Poison.encode!(body)) |> elem(1)
+    Poison.decode!(response.body)
+  end
+
+  def gists_comments_edit(gist_id, comment_id, comment) do
+    body = %{ "body": comment }
+    response = Gateway.patch("/gists/#{gist_id}/comments/#{comment_id}", Poison.encode!(body)) |> elem(1)
+    Poison.decode!(response.body)
+  end
+
+  def gists_comments_delete(gist_id, comment_id) do
+    response = Gateway.delete("/gists/#{gist_id}/comments/#{comment_id}") |> elem(1)
+    response.status_code == 204
   end
 
   defp fetch_gists(url) do
@@ -77,6 +135,5 @@ defmodule Ehee.Gists do
   defp process_page({items, next_page_url}) do
     {items, {nil, next_page_url}}
   end
-
 
 end
