@@ -21,7 +21,6 @@ defmodule Ehee.Gists do
     Poison.decode!(response.body)
   end
 
-
   def gists_create(description, is_public, file_name, content) do
     body = %{ "description": description,
               "public": is_public,
