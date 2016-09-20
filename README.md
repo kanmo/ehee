@@ -1,6 +1,6 @@
 # Ehee
+This is an unofficial elixir client for the Github API. 
 
-**TODO: Add description**
 
 ## Installation
 
@@ -20,5 +20,12 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     def application do
       [applications: [:ehee]]
     end
+    ```
+
+  3. Fetching dependencies and running on elixir console:
+
+    ```elixir
+    mix deps.get
+    iex -S mix
     ```
 
