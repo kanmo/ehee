@@ -57,4 +57,21 @@ defmodule Ehee.Repos do
     Poison.decode!(response.body)
   end
 
+  def pulls_files(owner, repo, pull_no) do
+    response = Gateway.get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/files") |> elem(1)
+    Poison.decode!(response.body)
+  end
+
+  def pulls_merged?(owner, repo, pull_no) do
+    response = Gateway.get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge") |> elem(1)
+    response.status_code == 204
+  end
+
+  def pulls_merge!(owner, repo, pull_no, message \\ "") do
+    params = %{ commit_message: message}
+    response = Gateway.put("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge", Poison.encode!(params)) |> elem(1)
+    Poison.decode!(response.body)
+  end
+
+
 end
