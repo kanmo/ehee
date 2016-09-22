@@ -7,6 +7,8 @@ defmodule Ehee.Gateway do
     @endpoint
   end
 
+
+
   defp process_url(url) do
     @endpoint <> url
   end
@@ -15,7 +17,7 @@ defmodule Ehee.Gateway do
     body
   end
 
-  defp process_request_headers(headers) do
+  defp process_request_headers(%{access_token: access_token}, headers) do
     headers ++ [
       {"Authorization", "Basic #{:base64.encode(credentials)}"}
     ]

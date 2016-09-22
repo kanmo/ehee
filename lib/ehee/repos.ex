@@ -1,13 +1,16 @@
 defmodule Ehee.Repos do
+  import Ehee
   alias Ehee.Gateway
 
-  def repos(options \\ []) do
+  def repos(credential, options \\ []) do
     params = %{visibility: Keyword.get(options, :visibility),
                sort: Keyword.get(options, :sort),
                direction: Keyword.get(options, :direction)}
 
-    response = Gateway.get("/user/repos", [], params: params) |> elem(1)
-    Poison.decode!(response.body)
+    get("/user/repos", credential)
+
+    # response = Gateway.get("/user/repos", [], params: params) |> elem(1)
+    # Poison.decode!(response.body)
   end
 
   def repos_user(username, options \\ []) do

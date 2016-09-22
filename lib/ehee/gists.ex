@@ -1,27 +1,25 @@
 defmodule Ehee.Gists do
+  import Ehee
   alias Ehee.Gateway
 
-  def gists do
-    response = Gateway.get("/gists") |> elem(1)
-    Poison.decode!(response.body)
+  def gists(credential) do
+    get("/gists", credential)
   end
 
-  def gists_user(username) do
-    response = Gateway.get("/users/#{username}/gists") |> elem(1)
-    Poison.decode!(response.body)
+  def gists(credential, id) do
+    get("/gists/#{id}", credential)
   end
 
-  def gists_public do
-    Stream.resource(fn -> fetch_gists("/gists/public") end, &process_page/1, fn _ -> end)
-    |> Enum.take(100)
+  def gists_user(credential, username) do
+    get("/users/#{username}/gists", credential)
   end
 
-  def gists(id) do
-    response = Gateway.get("/gists/#{id}") |> elem(1)
-    Poison.decode!(response.body)
-  end
+  # def gists_public do
+  #   Stream.resource(fn -> fetch_gists("/gists/public") end, &process_page/1, fn _ -> end)
+  #   |> Enum.take(100)
+  # end
 
-  def gists_create(description, is_public, file_name, content) do
+  def gists_create(credential, description, is_public, file_name, content) do
     body = %{ "description": description,
               "public": is_public,
               "files": %{
@@ -31,39 +29,35 @@ defmodule Ehee.Gists do
               }
             }
 
-    response = Gateway.post("/gists", Poison.encode!(body)) |> elem(1)
-    Poison.decode!(response.body)
+    post("/gists", credential, body)
   end
 
-  def gists_edit(id, file_name, content) do
+  def gists_edit(credential, id, file_name, content) do
     body = %{"files": %{
                 "#{file_name}": %{
-                  content: content
+                  "content": content
                            }
                     }
-             }
-    response = Gateway.patch("/gists/#{id}", Poison.encode!(body)) |> elem(1)
-    Poison.decode!(response.body)
+            }
+
+    patch("/gists/#{id}", credential, body)
   end
 
-  def gists_star(id) do
-    response = Gateway.put("/gists/#{id}/star", "") |> elem(1)
-    response.status_code == 204
+  def gists_star(credential, id) do
+    put("/gists/#{id}/star", credential)
   end
 
-  def gists_unstar(id) do
-    response = Gateway.delete("/gists/#{id}/star") |> elem(1)
-    response.status_code == 204
+  def gists_unstar(credential, id) do
+    delete("/gists/#{id}/star", credential)
   end
 
-  def gists_starred?(id) do
-    response = Gateway.get("/gists/#{id}/star") |> elem(1)
-    response.status_code == 204
+  def gists_starred?(credential, id) do
+    resp = get("/gists/#{id}/star", credential)
+    resp |> elem(0) == 204
   end
 
-  def gists_destroy(id) do
-    response = Gateway.delete("/gists/#{id}") |> elem(1)
-    response.status_code == 204
+  def gists_destroy(credential, id) do
+    delete("/gists/#{id}", credential)
   end
 
   def gists_comments(id) do
