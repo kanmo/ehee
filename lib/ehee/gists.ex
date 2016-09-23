@@ -60,31 +60,26 @@ defmodule Ehee.Gists do
     delete("/gists/#{id}", credential)
   end
 
-  def gists_comments(id) do
-    response = Gateway.get("/gists/#{id}/comments") |> elem(1)
-    Poison.decode!(response.body)
+  def gists_comments(credential, id) do
+    get("/gists/#{id}/comments", credential)
   end
 
-  def gists_comments(gist_id, comment_id) do
-    response = Gateway.get("/gists/#{gist_id}/comments/#{comment_id}")
-    Poison.decode!(response.body)
+  def gists_comments(credential, gist_id, comment_id) do
+    get("/gists/#{gist_id}/comments/#{comment_id}", credential)
   end
 
-  def gists_comments_create(id, comment) do
+  def gists_comments_create(credential, id, comment) do
     body = %{ "body": comment}
-    response = Gateway.post("/gists/#{id}/comments", Poison.encode!(body)) |> elem(1)
-    Poison.decode!(response.body)
+    post("/gists/#{id}/comments", credential, body)
   end
 
-  def gists_comments_edit(gist_id, comment_id, comment) do
+  def gists_comments_edit(credential, gist_id, comment_id, comment) do
     body = %{ "body": comment }
-    response = Gateway.patch("/gists/#{gist_id}/comments/#{comment_id}", Poison.encode!(body)) |> elem(1)
-    Poison.decode!(response.body)
+    patch("/gists/#{gist_id}/comments/#{comment_id}", credential, body)
   end
 
-  def gists_comments_delete(gist_id, comment_id) do
-    response = Gateway.delete("/gists/#{gist_id}/comments/#{comment_id}") |> elem(1)
-    response.status_code == 204
+  def gists_comments_delete(credential, gist_id, comment_id) do
+    delete("/gists/#{gist_id}/comments/#{comment_id}",  credential)
   end
 
   defp fetch_gists(url) do
