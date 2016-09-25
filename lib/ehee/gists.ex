@@ -1,6 +1,5 @@
 defmodule Ehee.Gists do
   import Ehee
-  alias Ehee.Gateway
 
   def gists(credential) do
     get("/gists", credential)
@@ -79,16 +78,6 @@ defmodule Ehee.Gists do
 
   def gists_comments_delete(credential, gist_id, comment_id) do
     delete("/gists/#{gist_id}/comments/#{comment_id}",  credential)
-  end
-
-  defp fetch_gists(cred, url) do
-    gists = get(url)
-
-    links = response.headers
-    |> extract_links
-    |> parse_links
-
-    {gists, links["next"]}
   end
 
 end

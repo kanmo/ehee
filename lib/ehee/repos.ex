@@ -1,6 +1,5 @@
 defmodule Ehee.Repos do
   import Ehee
-  alias Ehee.Gateway
 
   def repos(credential, options \\ []) do
     params = %{visibility: Keyword.get(options, :visibility),
@@ -8,73 +7,60 @@ defmodule Ehee.Repos do
                direction: Keyword.get(options, :direction)}
 
     get("/user/repos", credential)
-
-    # response = Gateway.get("/user/repos", [], params: params) |> elem(1)
-    # Poison.decode!(response.body)
   end
 
-  def repos_user(username, options \\ []) do
+  def repos_user(credential, username, options \\ []) do
     params = %{sort: Keyword.get(options, :sort),
                direction: Keyword.get(options, :direction)}
 
-    response = Gateway.get("/users/#{username}/repos", [], params: params) |> elem(1)
-    Poison.decode!(response.body)
+    get("/users/#{username}/repos", credential, [], params: params)
   end
 
-  def pulls(owner, repo, options \\ []) do
+  def pulls(credential, owner, repo, options \\ []) do
     params = %{state: Keyword.get(options, :state),
                sort: Keyword.get(options, :sort),
                direction: Keyword.get(options, :direction)}
 
-    response = Gateway.get("/repos/#{owner}/#{repo}/pulls", [], params: params) |> elem(1)
-    Poison.decode!(response.body)
+    get("/repos/#{owner}/#{repo}/pulls", credential, [], params: params)
   end
 
-  def pulls_single(owner, repo, pull_no) do
-    response = Gateway.get("/repos/#{owner}/#{repo}/pulls/#{pull_no}") |> elem(1)
-    Poison.decode!(response.body)
+  def pulls_single(credential, owner, repo, pull_no) do
+    get("/repos/#{owner}/#{repo}/pulls/#{pull_no}", credential)
   end
 
-  def pulls_create(owner, repo, title, head, base, body \\ "") do
+  def pulls_create(credential, owner, repo, title, head, base, body \\ "") do
     params = %{title: title,
                body: body,
                head: head,
                base: base }
 
-    response = Gateway.post("/repos/#{owner}/#{repo}/pulls", Poison.encode!(params)) |> elem(1)
-    Poison.decode!(response.body)
+    post("/repos/#{owner}/#{repo}/pulls", credential, params)
   end
 
-  def pulls_edit(owner, repo, pull_no, title, base, body, state) do
+  def pulls_edit(credential, owner, repo, pull_no, title, base, body, state) do
     params = %{title: title,
                body: body,
                state: state,
                base: base }
 
-    response = Gateway.post("/repos/#{owner}/#{repo}/pulls/#{pull_no}", Poison.encode!(params)) |> elem(1)
-    Poison.decode!(response.body)
+    post("/repos/#{owner}/#{repo}/pulls/#{pull_no}", credential, params)
   end
 
-  def pulls_commits(owner, repo, pull_no) do
-    response = Gateway.get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/commits") |> elem(1)
-    Poison.decode!(response.body)
+  def pulls_commits(credential, owner, repo, pull_no) do
+    get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/commits", credential)
   end
 
-  def pulls_files(owner, repo, pull_no) do
-    response = Gateway.get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/files") |> elem(1)
-    Poison.decode!(response.body)
+  def pulls_files(credential, owner, repo, pull_no) do
+    get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/files", credential)
   end
 
-  def pulls_merged?(owner, repo, pull_no) do
-    response = Gateway.get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge") |> elem(1)
-    response.status_code == 204
+  def pulls_merged?(credential, owner, repo, pull_no) do
+    get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge", credential)
   end
 
-  def pulls_merge!(owner, repo, pull_no, message \\ "") do
+  def pulls_merge!(credential, owner, repo, pull_no, message \\ "") do
     params = %{ commit_message: message}
-    response = Gateway.put("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge", Poison.encode!(params)) |> elem(1)
-    Poison.decode!(response.body)
+    put("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge", credential, params)
   end
-
 
 end
