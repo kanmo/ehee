@@ -3,34 +3,31 @@ defmodule Ehee.Mixfile do
 
   def project do
     [app: :ehee,
-     version: "0.1.0",
+     version: "0.0.1",
      elixir: "~> 1.3",
+     name: "Ehee",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger, :httpoison, :poison]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
       {:httpoison, "~> 0.9"},
       {:poison, "~> 1.5"},
       {:httpotion, github: "myfreeweb/httpotion"},
+      {:ex_doc, "~> 0.11"},
+      {:earmark, ">= 0.0.0"}
     ]
+  end
+
+  defp package do
+    [ maintainers: ["Akihide Kang"],
+      licenses: ["MIT"],
+      links: %{ "Github" => "https://github.com/kanmo/ehee" } ]
   end
 end

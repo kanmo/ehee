@@ -29,3 +29,4 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     iex -S mix
     ```
 
+This software is released under the MIT License, see LICENSE.txt.
