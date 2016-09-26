@@ -96,10 +96,10 @@ defmodule Ehee do
     @endpoint <> path
   end
 
-  defp authorization_headers(%{access_token: token}, headers) do
+  def authorization_headers(%{access_token: token}, headers) do
     headers ++ [{"Authorization", "token #{token}"}]
   end
 
-  defp handle_response(%HTTPoison.Response{status_code: 200, body: body}), do: body
-  defp handle_response(%HTTPoison.Response{status_code: status_code, body: body}), do: { status_code, body }
+  def handle_response(%HTTPoison.Response{status_code: 200, body: body}), do: body
+  def handle_response(%HTTPoison.Response{status_code: status_code, body: body}), do: { status_code, body }
 end
