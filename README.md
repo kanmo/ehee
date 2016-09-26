@@ -1,4 +1,4 @@
-# Ehee
+# Ehee [![hex.pm version](https://img.shields.io/hexpm/v/ehee.svg)](https://hex.pm/packages/ehee) [![hex.pm](https://img.shields.io/hexpm/l/ehee.svg)](https://github.com/kanmo/ehee/blob/master/LICENSE)
 This is an unofficial elixir client for the Github API. 
 
 
