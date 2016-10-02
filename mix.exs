@@ -26,7 +26,8 @@ defmodule Ehee.Mixfile do
       {:httpoison, "~> 0.9"},
       {:poison, "~> 1.5"},
       {:ex_doc, "~> 0.11"},
-      {:earmark, ">= 0.0.0"}
+      {:earmark, ">= 0.0.0"},
+      {:exvcr, "~> 0.6", only: :test},
     ]
   end
 

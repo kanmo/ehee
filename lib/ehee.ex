@@ -2,27 +2,33 @@ defmodule Ehee do
   use HTTPoison.Base
   @endpoint "https://api.github.com"
 
+  @type response :: {integer, any}
+
+  @spec handle_response(HTTPoison.Response.t) :: response
+  def handle_response(%HTTPoison.Response{status_code: 200, body: body}), do: Poison.decode!(body)
+  def handle_response(%HTTPoison.Response{status_code: status_code, body: body}), do: { status_code, body }
+
   def post(path, credential, body \\ "") do
     url = url(path)
-    request!(:post, url, Poison.encode!(body), authorization_headers(credential.auth, []), [])
+    request!(:post, url, Poison.encode!(body), authorization_header(credential.auth, []), [])
     |> handle_response
   end
 
   def patch(path, credential, body \\ "") do
     url = url(path)
-    request!(:post, url, Poison.encode!(body), authorization_headers(credential.auth, []), [])
+    request!(:post, url, Poison.encode!(body), authorization_header(credential.auth, []), [])
     |> handle_response
   end
 
   def put(path, credential, body \\ "") do
     url = url(path)
-    request!(:put, url, Poison.encode!(body), authorization_headers(credential.auth, []), [])
+    request!(:put, url, Poison.encode!(body), authorization_header(credential.auth, []), [])
     |> handle_response
   end
 
   def delete(path, credential, body \\ "") do
     url = url(path)
-    request!(:delete, url, Poison.encode!(body), authorization_headers(credential.auth, []), [])
+    request!(:delete, url, Poison.encode!(body), authorization_header(credential.auth, []), [])
     |> handle_response
   end
 
@@ -44,8 +50,11 @@ defmodule Ehee do
   end
 
   defp stream_if_needed(result = {status_code, _}, _) when is_number(status_code), do: result
+
   defp stream_if_needed({body, nil, _}, _), do: body
+
   defp stream_if_needed({body, _, _}, :one_page), do: body
+
   defp stream_if_needed(initial_results, _) do
     Stream.resource(
       fn -> initial_results end,
@@ -54,7 +63,7 @@ defmodule Ehee do
   end
 
   def request_with_pagination(method, url, auth, body \\ "") do
-    resp = request!(method, url, Poison.encode!(body), authorization_headers(auth, []), [])
+    resp = request!(method, url, Poison.encode!(body), authorization_header(auth, []), [])
     case handle_response(resp) do
       x when is_tuple(x) -> x
       _ -> pagination_tuple(resp, auth)
@@ -96,10 +105,9 @@ defmodule Ehee do
     @endpoint <> path
   end
 
-  def authorization_headers(%{access_token: token}, headers) do
+  @spec authorization_header(Credential.auth, list) :: list
+  def authorization_header(%{access_token: token}, headers) do
     headers ++ [{"Authorization", "token #{token}"}]
   end
 
-  def handle_response(%HTTPoison.Response{status_code: 200, body: body}), do: body
-  def handle_response(%HTTPoison.Response{status_code: status_code, body: body}), do: { status_code, body }
 end
