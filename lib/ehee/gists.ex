@@ -9,12 +9,12 @@ defmodule Ehee.Gists do
   List authenticated users gists
 
   ## Example
-      Ehee.Gists.gist(credential)
+      Ehee.Gists.list(credential)
 
   More info at: https://developer.github.com/v3/gists/#list-a-users-gists
   """
-  @spec gists(Credential.t) :: Ehee.response
-  def gists(credential) do
+  @spec list(Credential.t) :: Ehee.response
+  def list(credential) do
     get("/gists", credential)
   end
 
@@ -22,12 +22,12 @@ defmodule Ehee.Gists do
   List public gists for specified user
 
   ## Example
-      Ehee.Gists.gists_user(credential, "username")
+      Ehee.Gists.list_users(credential, "username")
 
   More info at: https://developer.github.com/v3/gists/#list-a-users-gists
   """
-  @spec gists_user(Credential.t, binary) :: Ehee.response
-  def gists_user(credential, username) do
+  @spec list_users(Credential.t, binary) :: Ehee.response
+  def list_users(credential, username) do
     get("/users/#{username}/gists", credential)
   end
 
@@ -35,12 +35,12 @@ defmodule Ehee.Gists do
   List all public gists
 
   ## Example
-      Ehee.Gists.gists_public(credential)
+      Ehee.Gists.list_public(credential)
 
   More info at: https://developer.github.com/v3/gists/#list-all-public-gists
   """
-  @spec gists_public(Credential.t) :: Ehee.response
-  def gists_public(credential) do
+  @spec list_public(Credential.t) :: Ehee.response
+  def list_public(credential) do
     get("/gists/public", credential, [], [pagination: :stream])
   end
 
@@ -48,12 +48,12 @@ defmodule Ehee.Gists do
   Get a single gist
 
   ## Example
-      Ehee.Gists.gists(credential, 1234567)
+      Ehee.Gists.show(credential, 1234567)
 
   More info at: https://developer.github.com/v3/gists/#get-a-single-gist
   """
-  @spec gists(Credential.t, binary | integer) :: Ehee.response
-  def gists(credential, id) do
+  @spec show(Credential.t, binary | integer) :: Ehee.response
+  def show(credential, id) do
     get("/gists/#{id}", credential)
   end
 
@@ -61,12 +61,12 @@ defmodule Ehee.Gists do
   Create a gist
 
   ## Example
-      Ehee.gist_create(credential, "gist description", true, "file1", "sample gist")
+      Ehee.Gists.create(credential, "gist description", true, "file1", "sample gist")
 
   More info at: https://developer.github.com/v3/gists/#create-a-gist
   """
-  @spec gists_create(Credential.t, binary, boolean, binary, binary) :: Ehee.response
-  def gists_create(credential, description, is_public, file_name, content) do
+  @spec create(Credential.t, binary, boolean, binary, binary) :: Ehee.response
+  def create(credential, description, is_public, file_name, content) do
     body = %{ "description": description,
               "public": is_public,
               "files": %{
@@ -83,12 +83,12 @@ defmodule Ehee.Gists do
   Edit a gist
 
   ## Example
-      Ehee.gist.gist_edit(credential, 1234567, "files", "sample gist")
+      Ehee.Gists.edit(credential, 1234567, "files", "sample gist")
 
   More info at: https://developer.github.com/v3/gists/#edit-a-gist
   """
-  @spec gists_edit(Credential.t, binary | integer, binary, binary) :: Ehee.response
-  def gists_edit(credential, id, file_name, content) do
+  @spec edit(Credential.t, binary | integer, binary, binary) :: Ehee.response
+  def edit(credential, id, file_name, content) do
     body = %{"files": %{
                 "#{file_name}": %{
                   "content": content
@@ -103,12 +103,12 @@ defmodule Ehee.Gists do
   Star a gist
 
   ## Example
-      Ehee.gists_star(credential, 1234567)
+      Ehee.Gists.star(credential, 1234567)
 
   More info at: https://developer.github.com/v3/gists/#star-a-gist
   """
-  @spec gists_star(Credential.t, binary | integer) :: Ehee.response
-  def gists_star(credential, id) do
+  @spec star(Credential.t, binary | integer) :: Ehee.response
+  def star(credential, id) do
     put("/gists/#{id}/star", credential)
   end
 
@@ -116,12 +116,12 @@ defmodule Ehee.Gists do
   Unstar a gist
 
   ## Example
-      Ehee.gists_unstar(credential, 1234567)
+      Ehee.Gists.unstar(credential, 1234567)
 
   More info at: https://developer.github.com/v3/gists/#unstar-a-gist
   """
-  @spec gists_unstar(Credentail.t, binary | integer) :: Ehee.response
-  def gists_unstar(credential, id) do
+  @spec unstar(Credentail.t, binary | integer) :: Ehee.response
+  def unstar(credential, id) do
     delete("/gists/#{id}/star", credential)
   end
 
@@ -129,12 +129,12 @@ defmodule Ehee.Gists do
   Check if a gist is starred
 
   ## Example
-      Ehee.gists_starred?(credential, 1234567)
+      Ehee.Gists.starred?(credential, 1234567)
 
   More info at: https://developer.github.com/v3/gists/#check-if-a-gist-is-starred
   """
-  @spec gists_starred?(Credential.t, binary | integer) :: boolean
-  def gists_starred?(credential, id) do
+  @spec starred?(Credential.t, binary | integer) :: boolean
+  def starred?(credential, id) do
     resp = get("/gists/#{id}/star", credential)
     resp |> elem(0) == 204
   end
@@ -143,12 +143,12 @@ defmodule Ehee.Gists do
   Delete a gist
 
   ## Example
-      Ehee.gists_destroy(credential, 1234567)
+      Ehee.Gists.destroy(credential, 1234567)
 
   More info at: https://developer.github.com/v3/gists/#delete-a-gist
   """
-  @spec gists_destroy(Credential.t, binary | integer) :: Ehee.response
-  def gists_destroy(credential, id) do
+  @spec destroy(Credential.t, binary | integer) :: Ehee.response
+  def destroy(credential, id) do
     delete("/gists/#{id}", credential)
   end
 
@@ -156,12 +156,12 @@ defmodule Ehee.Gists do
   List gist on a gist
 
   ## Example
-      Ehee.gists_comments(credential, 1234567)
+      Ehee.Gists.list_comments(credential, 1234567)
 
   More info at: https://developer.github.com/v3/gists/comments/#list-comments-on-a-gist
   """
-  @spec gists_comments(Credentail.t, binary | integer) :: Ehee.response
-  def gists_comments(credential, id) do
+  @spec list_comments(Credentail.t, binary | integer) :: Ehee.response
+  def list_comments(credential, id) do
     get("/gists/#{id}/comments", credential)
   end
 
@@ -169,12 +169,12 @@ defmodule Ehee.Gists do
   Get a single comment
 
   ## Example
-      Ehee.gists_comments(credential, 1234567, 1234567)
+      Ehee.Gists.show_comments(credential, 1234567, 1234567)
 
   More info at: https://developer.github.com/v3/gists/comments/#get-a-single-comment
   """
-  @spec gists_comments(Credentail.t, binary | integer, binary | integer) :: Ehee.response
-  def gists_comments(credential, gist_id, comment_id) do
+  @spec show_comments(Credentail.t, binary | integer, binary | integer) :: Ehee.response
+  def show_comments(credential, gist_id, comment_id) do
     get("/gists/#{gist_id}/comments/#{comment_id}", credential)
   end
 
@@ -182,12 +182,12 @@ defmodule Ehee.Gists do
   Create a comment
 
   ## Example
-      Ehee.gists_comments_create(credential, 1234567, "gist comment!")
+      Ehee.Gists.create_comment(credential, 1234567, "gist comment!")
 
   More info at: https://developer.github.com/v3/gists/comments/#create-a-comment
   """
-  @spec gists_comments_create(Credentail.t, binary | integer, binary) :: Ehee.response
-  def gists_comments_create(credential, id, comment) do
+  @spec create_comment(Credentail.t, binary | integer, binary) :: Ehee.response
+  def create_comment(credential, id, comment) do
     body = %{ "body": comment}
     post("/gists/#{id}/comments", credential, body)
   end
@@ -196,12 +196,12 @@ defmodule Ehee.Gists do
   Edit a comment
 
   ## Example
-      Ehee.gists_coments_edit(credential, 1234567, 1234567, "gist comment!")
+      Ehee.Gists.edit_coment(credential, 1234567, 1234567, "gist comment!")
 
   More info at: https://developer.github.com/v3/gists/comments/#edit-a-comment
   """
-  @spec gists_comments_edit(Credentail.t, binary | integer, binary | integer, binary) :: Ehee.response
-  def gists_comments_edit(credential, gist_id, comment_id, comment) do
+  @spec edit_comment(Credentail.t, binary | integer, binary | integer, binary) :: Ehee.response
+  def edit_comment(credential, gist_id, comment_id, comment) do
     body = %{ "body": comment }
     patch("/gists/#{gist_id}/comments/#{comment_id}", credential, body)
   end
@@ -210,12 +210,12 @@ defmodule Ehee.Gists do
   Delete a comment
 
   ## Example
-      Ehee.gists_comments_delete(credential, 1234567, 1234567)
+      Ehee.Gists.delete_comment(credential, 1234567, 1234567)
 
   More info at: https://developer.github.com/v3/gists/comments/#delete-a-comment
   """
-  @spec gists_comments_delete(Credential.t, binary | integer, binary | integer) :: Ehee.response
-  def gists_comments_delete(credential, gist_id, comment_id) do
+  @spec delete_comment(Credential.t, binary | integer, binary | integer) :: Ehee.response
+  def delete_comment(credential, gist_id, comment_id) do
     delete("/gists/#{gist_id}/comments/#{comment_id}",  credential)
   end
 end
