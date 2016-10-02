@@ -1,0 +1,40 @@
+[
+  {
+    "request": {
+      "body": "\"\"",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "delete",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/gists/72d5b0fab65e2264c9140d30b191c3c0/comments/1880862"
+    },
+    "response": {
+      "body": "",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 09:11:20 GMT",
+        "Status": "204 No Content",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4999",
+        "X-RateLimit-Reset": "1475403080",
+        "X-OAuth-Scopes": "gist, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "Vary": "Accept-Encoding",
+        "X-Served-By": "5aeb3f30c9e3ef6ef7bcbcddfd9a68f7",
+        "X-GitHub-Request-Id": "72915010:3E49:5DC896:57F0CF37"
+      },
+      "status_code": 204,
+      "type": "ok"
+    }
+  }
+]

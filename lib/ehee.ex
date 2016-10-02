@@ -98,7 +98,6 @@ defmodule Ehee do
     |> List.first
   end
 
-
   defp merge_uri_params(uri, []), do: uri
 
   defp url(path) do

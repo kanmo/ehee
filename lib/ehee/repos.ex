@@ -140,7 +140,8 @@ defmodule Ehee.Repos do
   """
   @spec pull_request_merged?(Credential.t, binary, binary, integer) :: Ehee.response
   def pull_request_merged?(credential, owner, repo, pull_no) do
-    get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge", credential)
+    {status, _} = get("/repos/#{owner}/#{repo}/pulls/#{pull_no}/merge", credential)
+    status == 201
   end
 
   @doc """

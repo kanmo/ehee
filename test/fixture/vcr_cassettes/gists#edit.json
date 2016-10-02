@@ -1,0 +1,44 @@
+[
+  {
+    "request": {
+      "body": "{\"files\":{\"file1\":{\"content\":\"editted gist\"}}}",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3"
+    },
+    "response": {
+      "body": "{\"url\":\"https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3\",\"forks_url\":\"https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3/forks\",\"commits_url\":\"https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3/commits\",\"id\":\"d3167879e3abbbb95b5d854d34478ea3\",\"git_pull_url\":\"https://gist.github.com/d3167879e3abbbb95b5d854d34478ea3.git\",\"git_push_url\":\"https://gist.github.com/d3167879e3abbbb95b5d854d34478ea3.git\",\"html_url\":\"https://gist.github.com/d3167879e3abbbb95b5d854d34478ea3\",\"files\":{\"file1\":{\"filename\":\"file1\",\"type\":\"text/plain\",\"language\":null,\"raw_url\":\"https://gist.githubusercontent.com/kanmo/d3167879e3abbbb95b5d854d34478ea3/raw/10340ff987fe22b09529d400b4049a59ec68a8e2/file1\",\"size\":12,\"truncated\":false,\"content\":\"editted gist\"}},\"public\":true,\"created_at\":\"2016-10-02T08:20:10Z\",\"updated_at\":\"2016-10-02T08:24:39Z\",\"description\":\"test gist\",\"comments\":0,\"user\":null,\"comments_url\":\"https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3/comments\",\"owner\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"forks\":[],\"history\":[{\"user\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"version\":\"c266a4dd514bc4b49084b39af1eb2551f1148737\",\"committed_at\":\"2016-10-02T08:24:39Z\",\"change_status\":{\"total\":2,\"additions\":1,\"deletions\":1},\"url\":\"https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3/c266a4dd514bc4b49084b39af1eb2551f1148737\"},{\"user\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"version\":\"1f4373c7a2fd3172dcdda92e768b4cecf69b2592\",\"committed_at\":\"2016-10-02T08:20:10Z\",\"change_status\":{\"total\":1,\"additions\":1,\"deletions\":0},\"url\":\"https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3/1f4373c7a2fd3172dcdda92e768b4cecf69b2592\"}],\"truncated\":false}",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 08:24:39 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "4089",
+        "Status": "200 OK",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4994",
+        "X-RateLimit-Reset": "1475399405",
+        "Cache-Control": "private, max-age=60, s-maxage=60",
+        "Vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+        "ETag": "\"b05e995565e280057c468adddfd3c952\"",
+        "X-OAuth-Scopes": "gist, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Served-By": "593010132f82159af0ded24b4932e109",
+        "X-GitHub-Request-Id": "72915010:3E51:1A59A92:57F0C447"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

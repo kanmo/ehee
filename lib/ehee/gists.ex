@@ -169,12 +169,12 @@ defmodule Ehee.Gists do
   Get a single comment
 
   ## Example
-      Ehee.Gists.show_comments(credential, 1234567, 1234567)
+      Ehee.Gists.show_comment(credential, 1234567, 1234567)
 
   More info at: https://developer.github.com/v3/gists/comments/#get-a-single-comment
   """
-  @spec show_comments(Credentail.t, binary | integer, binary | integer) :: Ehee.response
-  def show_comments(credential, gist_id, comment_id) do
+  @spec show_comment(Credentail.t, binary | integer, binary | integer) :: Ehee.response
+  def show_comment(credential, gist_id, comment_id) do
     get("/gists/#{gist_id}/comments/#{comment_id}", credential)
   end
 

@@ -1,0 +1,45 @@
+[
+  {
+    "request": {
+      "body": "\"\"",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/repos/kanmo/Hello-World/pulls/2/files"
+    },
+    "response": {
+      "body": "[{\"sha\":\"b89e7f50aed1b7662e731d71f0c633ddca76fdde\",\"filename\":\"hello_world.ex\",\"status\":\"added\",\"additions\":1,\"deletions\":0,\"changes\":1,\"blob_url\":\"https://github.com/kanmo/Hello-World/blob/dadcc13e59c4839835ba68163c4b9f6baf5312de/hello_world.ex\",\"raw_url\":\"https://github.com/kanmo/Hello-World/raw/dadcc13e59c4839835ba68163c4b9f6baf5312de/hello_world.ex\",\"contents_url\":\"https://api.github.com/repos/kanmo/Hello-World/contents/hello_world.ex?ref=dadcc13e59c4839835ba68163c4b9f6baf5312de\",\"patch\":\"@@ -0,0 +1 @@\\n+IO.inspect \\\"Hello World!\\\"\"}]",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 10:26:37 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "544",
+        "Status": "200 OK",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4997",
+        "X-RateLimit-Reset": "1475407316",
+        "Cache-Control": "private, max-age=60, s-maxage=60",
+        "Vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+        "ETag": "\"a996523257e45f26f2ebe9f4c416b067\"",
+        "Last-Modified": "Sun, 02 Oct 2016 10:21:56 GMT",
+        "X-OAuth-Scopes": "gist, notifications, read:org, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Served-By": "cee4c0729c8e9147e7abcb45b9d69689",
+        "X-GitHub-Request-Id": "72915010:3E49:5F090C:57F0E0DC"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

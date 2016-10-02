@@ -1,0 +1,44 @@
+[
+  {
+    "request": {
+      "body": "\"\"",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/repos/kanmo/Hello-World/pulls"
+    },
+    "response": {
+      "body": "[]",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 09:54:31 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2",
+        "Status": "200 OK",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4995",
+        "X-RateLimit-Reset": "1475403080",
+        "Cache-Control": "private, max-age=60, s-maxage=60",
+        "Vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+        "ETag": "\"5ac5a5cce459a861b22e9ceed2a6d2f2\"",
+        "X-OAuth-Scopes": "gist, notifications, read:org, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Served-By": "2c18a09f3ac5e4dd1e004af7c5a94769",
+        "X-GitHub-Request-Id": "72915010:3E4D:19665BC:57F0D957"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

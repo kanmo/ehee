@@ -1,0 +1,45 @@
+[
+  {
+    "request": {
+      "body": "{\"body\":\"test comment\"}",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/gists/72d5b0fab65e2264c9140d30b191c3c0/comments"
+    },
+    "response": {
+      "body": "{\"url\":\"https://api.github.com/gists/72d5b0fab65e2264c9140d30b191c3c0/comments/1888009\",\"id\":1888009,\"user\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"created_at\":\"2016-10-02T08:57:12Z\",\"updated_at\":\"2016-10-02T08:57:12Z\",\"body\":\"test comment\"}",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 08:57:12 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "1039",
+        "Status": "201 Created",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4987",
+        "X-RateLimit-Reset": "1475399405",
+        "Cache-Control": "private, max-age=60, s-maxage=60",
+        "Vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+        "ETag": "\"16852facdb437ff45bcaf2313b2eee47\"",
+        "X-OAuth-Scopes": "gist, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "Location": "https://api.github.com/gists/72d5b0fab65e2264c9140d30b191c3c0/comments/1888009",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Served-By": "52437fedc85beec8da3449496900fb9a",
+        "X-GitHub-Request-Id": "72915010:3E51:1A8F43D:57F0CBE7"
+      },
+      "status_code": 201,
+      "type": "ok"
+    }
+  }
+]

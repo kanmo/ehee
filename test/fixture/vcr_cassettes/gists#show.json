@@ -1,0 +1,45 @@
+[
+  {
+    "request": {
+      "body": "\"\"",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/gists/6050435"
+    },
+    "response": {
+      "body": "{\"url\":\"https://api.github.com/gists/6050435\",\"forks_url\":\"https://api.github.com/gists/6050435/forks\",\"commits_url\":\"https://api.github.com/gists/6050435/commits\",\"id\":\"6050435\",\"git_pull_url\":\"https://gist.github.com/6050435.git\",\"git_push_url\":\"https://gist.github.com/6050435.git\",\"html_url\":\"https://gist.github.com/6050435\",\"files\":{\"gistfile1.txt\":{\"filename\":\"gistfile1.txt\",\"type\":\"text/plain\",\"language\":\"Text\",\"raw_url\":\"https://gist.githubusercontent.com/kanmo/6050435/raw/8151d1f95c8873929620729791f1ef41b55a6d67/gistfile1.txt\",\"size\":798,\"truncated\":false,\"content\":\"require 'win32ole'\\n\\ndef getAbsoluePath(filename)\\n  fso = WIN32OLE.new 'Scripting.FileSystemObject'\\n  return fso.GetAbsolutePathName(filename)\\nend\\nfilename = getAbsoluePath \\\"sample1.xls\\\"\\n\\nxl = WIN32OLE.new 'Excel.Application'\\n\\nbook = xl.Workbooks.Open(filename)\\nbegin\\n  book.WorkSheets.each do |sheet|\\n    sheet.UsedRange.Rows.each do |row|\\n      record =[]\\n      row.Columns.each do |cell|\\n        if cell.Value.is_a?(String) &&\\n            cell.Value =~ %r(\\\\d\\\\d\\\\d\\\\d/\\\\d\\\\d/\\\\d\\\\d \\\\d\\\\d:\\\\d\\\\d:\\\\d\\\\d)\\n          begin\\n            record << Time.mktime(*cell.Value.split(%r([:/])))\\n          rescue ArgumentError => e\\n            STDERR.puts e.inspect\\n          end\\n        else\\n          record << cell.Value\\n        end\\n      end\\n      puts record.join(\\\",\\\")\\n    end\\n  end\\nensure\\n  book.Close\\n  xl.Quit\\nend\\n\"}},\"public\":true,\"created_at\":\"2013-07-21T23:41:31Z\",\"updated_at\":\"2015-12-20T01:39:12Z\",\"description\":\"rubima excel1.rb\",\"comments\":0,\"user\":null,\"comments_url\":\"https://api.github.com/gists/6050435/comments\",\"owner\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"forks\":[],\"history\":[{\"user\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"version\":\"8fade2ce1481bf85715a2f5630ca109fa1bd86f8\",\"committed_at\":\"2013-07-21T23:41:31Z\",\"change_status\":{\"total\":34,\"additions\":34,\"deletions\":0},\"url\":\"https://api.github.com/gists/6050435/8fade2ce1481bf85715a2f5630ca109fa1bd86f8\"}],\"truncated\":false}",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 08:16:43 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "3609",
+        "Status": "200 OK",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4996",
+        "X-RateLimit-Reset": "1475399405",
+        "Cache-Control": "private, max-age=60, s-maxage=60",
+        "Vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+        "ETag": "\"c23cdc9976702ab7efbc71d52cb45b48\"",
+        "Last-Modified": "Sun, 25 Sep 2016 05:19:11 GMT",
+        "X-OAuth-Scopes": "gist, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Served-By": "139317cebd6caf9cd03889139437f00b",
+        "X-GitHub-Request-Id": "72915010:3E51:1A4D066:57F0C26B"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

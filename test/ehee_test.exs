@@ -5,11 +5,13 @@ defmodule EheeTest do
   doctest Ehee
 
   test "authorization header" do
-    authorization_headers(%{access_token: 123456}, []) == [{"Authorization", "token 123456"}]
+    authorization_header(%{access_token: 123456}, []) == [{"Authorization", "token 123456"}]
   end
 
   test "handle response on a 200 response" do
-    assert handle_response(%HTTPoison.Response{status_code: 200, body: "body"}) == "body"
+    assert handle_response(%HTTPoison.Response{status_code: 200,
+                                               headers: %{},
+                                               body: "[\"body\"]"}) == ["body"]
   end
 
   test "handle response on a non-200 response" do

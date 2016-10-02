@@ -1,0 +1,40 @@
+[
+  {
+    "request": {
+      "body": "\"\"",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/gists/d3167879e3abbbb95b5d854d34478ea3/star"
+    },
+    "response": {
+      "body": "{}",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 08:44:25 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2",
+        "Status": "404 Not Found",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4991",
+        "X-RateLimit-Reset": "1475399405",
+        "X-OAuth-Scopes": "gist, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-GitHub-Request-Id": "72915010:3E4C:D0DE8F:57F0C8E8"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]

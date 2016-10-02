@@ -1,0 +1,45 @@
+[
+  {
+    "request": {
+      "body": "\"\"",
+      "headers": {
+        "Authorization": "token yourtokencomeshere"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.github.com/repos/kanmo/Hello-World/pulls/2/commits"
+    },
+    "response": {
+      "body": "[{\"sha\":\"dadcc13e59c4839835ba68163c4b9f6baf5312de\",\"commit\":{\"author\":{\"name\":\"kanmo\",\"email\":\"kanmo.ak@gmail.com\",\"date\":\"2016-10-02T10:05:50Z\"},\"committer\":{\"name\":\"kanmo\",\"email\":\"kanmo.ak@gmail.com\",\"date\":\"2016-10-02T10:05:50Z\"},\"message\":\"api test branch\",\"tree\":{\"sha\":\"9253cdcc6ecaaff1a06750bade2aba6bda949c05\",\"url\":\"https://api.github.com/repos/kanmo/Hello-World/git/trees/9253cdcc6ecaaff1a06750bade2aba6bda949c05\"},\"url\":\"https://api.github.com/repos/kanmo/Hello-World/git/commits/dadcc13e59c4839835ba68163c4b9f6baf5312de\",\"comment_count\":0},\"url\":\"https://api.github.com/repos/kanmo/Hello-World/commits/dadcc13e59c4839835ba68163c4b9f6baf5312de\",\"html_url\":\"https://github.com/kanmo/Hello-World/commit/dadcc13e59c4839835ba68163c4b9f6baf5312de\",\"comments_url\":\"https://api.github.com/repos/kanmo/Hello-World/commits/dadcc13e59c4839835ba68163c4b9f6baf5312de/comments\",\"author\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"committer\":{\"login\":\"kanmo\",\"id\":2505641,\"avatar_url\":\"https://avatars.githubusercontent.com/u/2505641?v=3\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/kanmo\",\"html_url\":\"https://github.com/kanmo\",\"followers_url\":\"https://api.github.com/users/kanmo/followers\",\"following_url\":\"https://api.github.com/users/kanmo/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/kanmo/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/kanmo/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/kanmo/subscriptions\",\"organizations_url\":\"https://api.github.com/users/kanmo/orgs\",\"repos_url\":\"https://api.github.com/users/kanmo/repos\",\"events_url\":\"https://api.github.com/users/kanmo/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/kanmo/received_events\",\"type\":\"User\",\"site_admin\":false},\"parents\":[{\"sha\":\"ac11a9125e5130e23ec8691c515bfdff28684103\",\"url\":\"https://api.github.com/repos/kanmo/Hello-World/commits/ac11a9125e5130e23ec8691c515bfdff28684103\",\"html_url\":\"https://github.com/kanmo/Hello-World/commit/ac11a9125e5130e23ec8691c515bfdff28684103\"}]}]",
+      "headers": {
+        "Server": "GitHub.com",
+        "Date": "Sun, 02 Oct 2016 10:25:11 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "2838",
+        "Status": "200 OK",
+        "X-RateLimit-Limit": "5000",
+        "X-RateLimit-Remaining": "4998",
+        "X-RateLimit-Reset": "1475407316",
+        "Cache-Control": "private, max-age=60, s-maxage=60",
+        "Vary": "Accept, Authorization, Cookie, X-GitHub-OTP",
+        "ETag": "\"869e1339a769f266866111fa74b377ea\"",
+        "Last-Modified": "Sun, 02 Oct 2016 10:21:56 GMT",
+        "X-OAuth-Scopes": "gist, notifications, read:org, repo",
+        "X-Accepted-OAuth-Scopes": "",
+        "X-GitHub-Media-Type": "github.v3; format=json",
+        "Access-Control-Expose-Headers": "ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval",
+        "Access-Control-Allow-Origin": "*",
+        "Content-Security-Policy": "default-src 'none'",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Served-By": "7b641bda7ec2ca7cd9df72d2578baf75",
+        "X-GitHub-Request-Id": "72915010:3E4C:D5BF6A:57F0E086"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
