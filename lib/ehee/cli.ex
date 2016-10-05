@@ -11,17 +11,16 @@ defmodule Ehee.CLI do
                                aliases: [h: :help,
                                          g: :gist,
                                          r: :repository])
-
     case parse do
 
       { [ help: true ], _, _}
         -> :help
 
-      { [ gist: gist_command ], _, _}
-        -> { :gist, gist_command }
+      { [ gist: gist_command ], args, _}
+        -> { :gist, gist_command, args }
 
-      { [ repository: repository_command ], _, _}
-        -> { :repository, repository_command }
+      { [ repository: repository_command ], args, _}
+        -> { :repository, repository_command, args }
 
       { _, [ user, project, count ], _ }
         -> { user, project, String.to_integer(count) }
@@ -37,4 +36,13 @@ defmodule Ehee.CLI do
     System.halt(0)
   end
 
+  def process({ :gist, command, args }) do
+    func = String.to_atom("Ehee.Gists.#{command}")
+    cred = Ehee.Credential.new(%{access_token: Application.get_env(:ehee, :access_token)})
+    code = quote do
+      Ehee.Gists.unquote(String.to_atom(command))(var!(credential), unquote(args))
+    end
+
+    Code.eval_quoted code, [credential: cred]
+  end
 end
