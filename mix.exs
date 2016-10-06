@@ -7,6 +7,7 @@ defmodule Ehee.Mixfile do
 
   def project do
     [app: :ehee,
+     escript: escript_config,
      version: "0.0.1",
      elixir: "~> 1.3",
      name: "Ehee",
@@ -35,5 +36,9 @@ defmodule Ehee.Mixfile do
     [ maintainers: ["Akihide Kang"],
       licenses: ["MIT"],
       links: %{ "Github" => "https://github.com/kanmo/ehee" } ]
+  end
+
+  defp escript_config do
+    [ main_module: Ehee.CLI ]
   end
 end
