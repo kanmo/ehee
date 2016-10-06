@@ -1,11 +1,10 @@
 defmodule Ehee.CLI do
-  def run(argv) do
+  def main(argv) do
     parse_args(argv)
     |> process
   end
 
   def parse_args(argv) do
-    IO.inspect argv
     parse = OptionParser.parse(argv,
                                switches: [ help: :boolean],
                                aliases: [h: :help,
@@ -42,6 +41,7 @@ defmodule Ehee.CLI do
       apply(Ehee.Gists, unquote(String.to_atom(command)), List.insert_at(unquote(args), 0, var!(credential)))
     end
 
-    Code.eval_quoted code, [credential: cred]
+    resp = Code.eval_quoted code, [credential: cred]
+    IO.inspect(resp)
   end
 end
