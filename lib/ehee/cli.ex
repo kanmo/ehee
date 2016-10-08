@@ -35,10 +35,19 @@ defmodule Ehee.CLI do
     System.halt(0)
   end
 
-  def process({ :gist, command, args }) do
+  def process({ type, command, args }) do
     cred = Ehee.Credential.new(%{access_token: Application.get_env(:ehee, :access_token)})
     code = quote do
-      apply(Ehee.Gists, unquote(String.to_atom(command)), List.insert_at(unquote(args), 0, var!(credential)))
+      module_name = case unquote(type) do
+                 :gist
+                   -> Ehee.Gists
+                 :repository
+                   -> Ehee.Repos
+                 end
+      method_name = unquote(String.to_atom(command))
+      parameters = List.insert_at(unquote(args), 0, var!(credential))
+
+      apply(module_name, method_name, parameters)
     end
 
     resp = Code.eval_quoted code, [credential: cred]
