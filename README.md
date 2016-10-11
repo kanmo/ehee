@@ -59,7 +59,7 @@ iex> credential = Ehee.Credential.new(%{access_token: "yourtokencomeshere"})
 * List a user's gists
 
 ```iex
-iex> Ehee.Gists.list_user(credential, "username")
+iex> Ehee.Gists.list_users(credential, "username")
 ```
 
 * List a authenticated user's gists
@@ -144,6 +144,44 @@ iex> Ehee.Gist.edit_comment(credential, 1, 1, "gist_comment")
 
 ```iex
 iex> Ehee.Gist.delete_comment(credential, 1, 1)
+```
+
+#### Repositories
+
+* List a user's repositories
+
+```iex
+iex> Ehee.Repos.list_users(credential, "username")
+```
+
+* List a authenticated user's gists
+
+```iex
+iex> Ehee.Repos.list(credential)
+```
+
+* List pull requests on a repository
+
+```iex
+iex> Ehee.Repos.pull_requests(credential, "ownername", "repositoryname)
+```
+
+* Get a single pull request on a repository
+
+```iex
+iex> Ehee.Repos.pull_requests(credential, "ownername", "repositoryname", 1)
+```
+
+* Create a pull request([see docs for all possible params](https://hexdocs.pm/ehee/Ehee.Repos.html#create_pull_request/7))
+
+```iex
+iex> Ehee.Repos.create_pull_request(credential, "ownername", "repositoryname", "pull request title", "octocat:new-feature", "master", "Please pull this in!")
+```
+
+* Update a pull request([see docs for all possible params](https://hexdocs.pm/ehee/Ehee.Repos.html#edit_pull_request/8))
+
+```iex
+iex> Ehee.Repos.edit_pull_request(credential, "ownername", "repositoryname", 1, "new title", "master", "new body", "open")
 ```
 
 This software is released under the MIT License, see LICENSE.txt.
