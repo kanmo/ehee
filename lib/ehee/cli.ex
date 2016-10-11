@@ -36,7 +36,7 @@ defmodule Ehee.CLI do
   end
 
   def process({ type, command, args }) do
-    cred = Ehee.Credential.new(%{access_token: Application.get_env(:ehee, :access_token)})
+    cred = Ehee.Credential.new(%{access_token: System.get_env("GH_ACCESS_TOKEN")})
     code = quote do
       module_name = case unquote(type) do
                  :gist
