@@ -9,20 +9,19 @@ defmodule Ehee.CLI do
                                switches: [ help: :boolean],
                                aliases: [h: :help,
                                          g: :gist,
-                                         r: :repository])
+                                         r: :repository,
+                                         i: :issue])
     case parse do
 
-      { [ help: true ], _, _}
-        -> :help
+      { [ help: true ], _, _} -> :help
 
-      { [ gist: gist_command ], args, _}
-        -> { :gist, gist_command, args }
+      { [ gist: gist_command ], args, _} -> { :gist, gist_command, args }
 
-      { [ repository: repository_command ], args, _}
-        -> { :repository, repository_command, args }
+      { [ repository: repository_command ], args, _} -> { :repository, repository_command, args }
 
-      { _, [ user, project, count ], _ }
-        -> { user, project, String.to_integer(count) }
+      { [ issue: issue_command ], args, _} -> { :issue, issue_command, args }
+
+      { _, [ user, project, count ], _ } -> { user, project, String.to_integer(count) }
 
       _ -> :help
     end
@@ -39,11 +38,11 @@ defmodule Ehee.CLI do
     cred = Ehee.Credential.new(%{access_token: System.get_env("GH_ACCESS_TOKEN")})
     code = quote do
       module_name = case unquote(type) do
-                 :gist
-                   -> Ehee.Gists
-                 :repository
-                   -> Ehee.Repos
-                 end
+                      :gist -> Ehee.Gists
+                      :repository -> Ehee.Repos
+                      :issue -> Ehee.Issues
+                    end
+
       method_name = unquote(String.to_atom(command))
       parameters = List.insert_at(unquote(args), 0, var!(credential))
 
