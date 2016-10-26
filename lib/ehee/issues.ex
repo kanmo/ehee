@@ -48,5 +48,36 @@ defmodule Ehee.Issues do
     patch("/repos/#{owner}/#{repo}/issues/#{no}", credential, params)
   end
 
+  def comments(credential, owner, repo, no, since \\ nil ) do
+    params = %{since: since}
+
+    get("/repos/#{owner}/#{repo}/issues/#{no}/comments", credential, [], params: params)
+  end
+
+  def list_comments(credential, owner, repo, options \\ []) do
+    params = %{sort: Keyword.get(options, :sort, "created"),
+               direction: Keyword.get(options, :direction),
+               since: Keyword.get(options, :since)}
+
+    get("/repos/#{owner}/#{repo}/issues/comments", credential, [], params: params)
+  end
+
+  def show_comment(credential, owner, repo, id) do
+    get("/repos/#{owner}/#{repo}/issues/comments/#{id}", credential)
+  end
+
+  def create_comment(credential, owner, repo, no, body) do
+    params = %{ body: body }
+    post("/repos/#{owner}/#{repo}/issues/#{no}/comments", credential, body)
+  end
+
+  def edit_comment(credential, owner, repo, id, body) do
+    params = %{ body: body }
+    patch("/repos/#{owner}/#{repo}/issues/comments/#{id}", credential, params)
+  end
+
+  def delete_comment(credential, owner, repo, id) do
+    delete("/repos/#{owner}/#{repo}/issues/comments/#{id}", credential)
+  end
 
 end
