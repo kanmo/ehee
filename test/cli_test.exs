@@ -19,8 +19,9 @@ defmodule CliTest do
     assert parse_args(["--repository", "list_users"]) == { :repository, "list_users", [] }
   end
 
-  test "three values" do
-    assert parse_args(["user", "project", "99"]) == { "user", "project", 99 }
+  test "issues method name returned by option parsing with -i and --issue options" do
+    assert parse_args(["-i", "list"]) == { :issue, "list", [] }
+    assert parse_args(["--issue", "list"]) == { :issue, "list", [] }
   end
 
 end
