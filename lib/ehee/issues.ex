@@ -1,6 +1,8 @@
 defmodule Ehee.Issues do
   import Ehee
   alias Ehee.Credential
+  import Ehee.TableFormatter, only: [print_table_for_columns: 2]
+
   @moduledoc """
   The Issues Webhooks API
   """
@@ -29,7 +31,9 @@ defmodule Ehee.Issues do
                direction: Keyword.get(options, :direction),
                since: Keyword.get(options, :since)
               }
+
     get("/repos/#{owner}/#{repo}/issues", credential, [], params: params)
+    |> print_table_for_columns(["number", "created_at", "title"])
   end
 
   @doc """
